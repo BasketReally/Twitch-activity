@@ -17,5 +17,5 @@ while True:
     )
     @client.event
     async def on_connect():
-      await client.change_presence(activity =   discord.Streaming(name = "Basket client coding", url = "https://www.twitch.tv/pwgood"))
+      await client.change_presence(activity=discord.Streaming(name = "Basket client coding", url = "https://www.twitch.tv/pwgood"))
     client.run((TOKEN), bot=False)
