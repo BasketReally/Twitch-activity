@@ -35,8 +35,7 @@ while True:
     client = commands.Bot(command_prefix='+',self_bot=True)
     @client.event
     async def on_connect():
-      await client.change_presence(activity=discord.Streaming(name = "Sleeping", url = "https://www.twitch.tv/pwgood"))
+      await client.change_presence(activity=discord.Streaming(name = "Sleeping...", url = "https://www.twitch.tv/pwgood"))
     print("pre stream")
     print("non stream")
     client.run((TOKEN), bot=False)
-  time.sleep(15)
