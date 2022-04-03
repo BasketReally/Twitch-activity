@@ -52,4 +52,4 @@ while True:
   print("Closing the stream status")
 
   time.sleep(15)
-  print("version 0.1")
+  print("version 0.2")
