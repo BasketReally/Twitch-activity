@@ -46,7 +46,7 @@ while True:
     @client.event
     async def on_connect():
 
-      await client.change_presence(activity=discord.Streaming(name = name, url = "https://www.twitch.tv/pwgood"))
+      await client.change_presence(activity=discord.Streaming(name = "Sleeping.", url = "https://www.twitch.tv/pwgood"))
 
     client.run("Njk4MTM1NzY3NzUwNTQxNDAy.Ycl5sA.kHqhaE9qW9ovTuXvZKZGdLSD0M0", bot=False)
   print("Closing the stream status")
