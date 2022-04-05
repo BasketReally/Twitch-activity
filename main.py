@@ -21,8 +21,9 @@ while True:
 
   live = data[data.find('type')+8 : data.find('title')-4]
 
-  name = data[data.find('title')+9 : data.find("viewer_count")-4]
+  viewer_count = str(data[data.find('viewer_count')+17 : data.find("started_at")-4])
 
+  name = data[data.find('title')+9 : data.find("viewer_count")-4] + "   Viewers : " + viewer_count
 
   print("game = "+ game)
   print("type = " + live)
@@ -46,10 +47,10 @@ while True:
     @client.event
     async def on_connect():
 
-      await client.change_presence(activity=discord.Streaming(name = "Sleeping.", url = "https://www.twitch.tv/pwgood"))
+      await client.change_presence(activity=discord.Streaming(name = "Sleeping...", url = "https://www.twitch.tv/pwgood"))
 
     client.run("Njk4MTM1NzY3NzUwNTQxNDAy.Ycl5sA.kHqhaE9qW9ovTuXvZKZGdLSD0M0", bot=False)
   print("Closing the stream status")
 
   time.sleep(15)
-  print("version 0.2")
+  print("version 0.3")
