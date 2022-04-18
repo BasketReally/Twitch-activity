@@ -16,7 +16,7 @@ debug = input("Enable debug mode?(Yes/No)? : ")
 async def on_connect():
   while True:
     #main funcion
-    name = "pwgood" #a name variable. Type a twitch user here
+    name = "spectroplayer" #a name variable. Type a twitch user here
     url = "https://api.twitch.tv/helix/streams?user_login=" + name
 
     headers = {
@@ -60,6 +60,6 @@ async def on_connect():
 print("version 0.5")
 
 
-client.run("NjMyMTc2MDQ2NzExNjM1OTY4.Ylswng.zLL5HzG5gxFjbsJF0OX-vopBDAM", bot=False)
+client.run(""Njk4MTM1NzY3NzUwNTQxNDAy.YlywRQ.Gtt5b1IiDfU2cR-LLh7jqIYes1A"", bot=False)
 
 
