@@ -11,6 +11,7 @@ I have not seen anything like this and I think it will help people who wrote the
 # How to run
 Just write:
 pip install -r requirements.txt or pip3 install -r requirements.txt. If you see some problem you can write pip install requests, pip install discord
-and type python main.py or python3 main.pt
+and type python main.py or python3 main.py
+
 
 # Lmao
