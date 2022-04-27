@@ -9,7 +9,7 @@ from discord.ext import tasks, commands
 client = commands.Bot(command_prefix='+',self_bot=True) #a client variable
 
 global debug
-debug = input("Enable debug mode?(Yes/No)? : ")
+#debug = input("Enable debug mode?(Yes/No)? : ")
 
   
 @client.event
@@ -60,6 +60,6 @@ async def on_connect():
 print("version 0.5")
 
 
-client.run(""Njk4MTM1NzY3NzUwNTQxNDAy.YlywRQ.Gtt5b1IiDfU2cR-LLh7jqIYes1A"", bot=False)
+client.run("Njk4MTM1NzY3NzUwNTQxNDAy.YlywRQ.Gtt5b1IiDfU2cR-LLh7jqIYes1A", bot=False)
 
 
