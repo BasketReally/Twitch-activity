@@ -60,6 +60,6 @@ async def on_connect():
 print("version 0.5")
 
 
-client.run("Njk4MTM1NzY3NzUwNTQxNDAy.YlywRQ.Gtt5b1IiDfU2cR-LLh7jqIYes1A", bot=False)
+client.run("Njk4MTM1NzY3NzUwNTQxNDAy.GeYURO.MjZ6fQ3-kt3Qqtoo1t39R2Y6l45LpVW6GGFmLs", bot=False)
 
 
