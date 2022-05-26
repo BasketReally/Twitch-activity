@@ -8,7 +8,7 @@ from discord.ext import tasks, commands
 
 client = commands.Bot(command_prefix='+',self_bot=True) #a client variable
 
-global debug
+#global debug
 #debug = input("Enable debug mode?(Yes/No)? : ")
 
   
@@ -39,12 +39,12 @@ async def on_connect():
 
     title = data[data.find('title')+9 : data.find("viewer_count")-4] + "   Viewers : " + viewer_count
 
-    if debug == "Yes":
-      #debug mode
-      print("data : " + data)
-      print("game = " + game)
-      print("type = " + live)
-      print("name = " + title)
+   # if debug == "Yes":
+    #  debug mode
+    #  print("data : " + data)
+    #  print("game = " + game)
+    #  print("type = " + live)
+    #  print("name = " + title)
     
     if live == "live":
       #live mode
