@@ -16,7 +16,7 @@ client = commands.Bot(command_prefix='+',self_bot=True) #a client variable
 async def on_connect():
   while True:
     #main funcion
-    name = "spectroplayer" #a name variable. Type a twitch user here
+    name = "pwgood" #a name variable. Type a twitch user here
     url = "https://api.twitch.tv/helix/streams?user_login=" + name
 
     headers = {
