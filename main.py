@@ -4,7 +4,7 @@
 
 #modules
 import requests, discord
-from discord.ext import tasks, commands
+from discord.ext import commands
 
 client = commands.Bot(command_prefix='+',self_bot=True) #a client variable
 
@@ -16,8 +16,8 @@ client = commands.Bot(command_prefix='+',self_bot=True) #a client variable
 async def on_connect():
   while True:
     #main funcion
-    name = "pwgood" #a name variable. Type a twitch user here
-    url = "https://api.twitch.tv/helix/streams?user_login=" + name
+    tnick = "pwgood" #a name variable. Type a twitch user here
+    url = "https://api.twitch.tv/helix/streams?user_login=" + tnick
 
     headers = {
       'Authorization' : 'Bearer vl7w8v42mf0p10dphf7uv0xwsc81tp', 
@@ -35,7 +35,7 @@ async def on_connect():
 
     live = data[data.find('type')+8 : data.find('title')-4]
 
-    viewer_count = str(data[data.find('viewer_count')+15 : data.find("started_at")-4])
+    viewer_count = str(data[data.find('viewer_count')+15 : data.find("started_at")-3])
 
     title = data[data.find('title')+9 : data.find("viewer_count")-4] + "   Viewers : " + viewer_count
 
@@ -48,18 +48,28 @@ async def on_connect():
     
     if live == "live":
       #live mode
-      activity=discord.Streaming(name = title,game = game, url = "https://www.twitch.tv/pwgood")
+      activity=discord.Streaming(
+        platform = "Twitch",
+        application_id = 734420240099704833,
+        name = title,
+        game = game, 
+        assets = {
+          'twitch' : 'pwgood',
+          'large_image' : '_'
+        },
+        url = "https://www.twitch.tv/" + tnick
+      )
       
     
     if live == "":
       #ofline mode
-      activity=discord.Streaming(name = "Sleeping...", url = "https://www.twitch.tv/pwgood")
+      activity=discord.Streaming(
+        name = "Играю в шарарам | Приватный стрим", 
+        url = "https://www.twitch.tv/" + tnick)
 
-    await client.change_presence(activity=activity) #stream activity
+    await client.change_presence(activity=activity) 
 
-print("version 0.5")
+print("version 0.6")
 
 
 client.run("Njk4MTM1NzY3NzUwNTQxNDAy.GeYURO.MjZ6fQ3-kt3Qqtoo1t39R2Y6l45LpVW6GGFmLs", bot=False)
-
-
