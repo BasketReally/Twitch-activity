@@ -5,6 +5,7 @@
 #modules
 import requests, discord
 from discord.ext import commands
+import os
 
 client = commands.Bot(command_prefix='+',self_bot=True) #a client variable
 
@@ -39,12 +40,31 @@ async def on_connect():
 
     title = data[data.find('title')+9 : data.find("viewer_count")-4] + "   Viewers : " + viewer_count
 
-   # if debug == "Yes":
-    #  debug mode
-    #  print("data : " + data)
-    #  print("game = " + game)
-    #  print("type = " + live)
-    #  print("name = " + title)
+    debugpr = "name = " + title + "," + "Game = " + "," + game + "Viewers = " + viewer_count
+
+    global pr, pf
+    pr, pf = 0
+
+    if live == "live":
+      if pr == 0:
+        print(debugpr)
+        debugprtm = debugpr
+        pr = 1
+      if pr  == 1:
+        if debugpr != debugprtm:
+          os.system("clear")
+          print("UPDATE!")
+          print(debugpr)
+          debugprtm = debugpr
+    if live == "":
+      if pf == 0:
+        os.system("clear")
+        print("UPDATE!")
+        print("sleep")
+        pf = 1
+    if live == "live":
+      pf = 0
+      
     
     if live == "live":
       #live mode
@@ -69,7 +89,7 @@ async def on_connect():
 
     await client.change_presence(activity=activity) 
 
-print("version 0.6")
+print("version 0.7")
 
 
-client.run("Njk4MTM1NzY3NzUwNTQxNDAy.GeYURO.MjZ6fQ3-kt3Qqtoo1t39R2Y6l45LpVW6GGFmLs", bot=False)
+client.run("token", bot=False)
