@@ -63,7 +63,7 @@ typing("Каким стримером ты хочешь стать?\n")
 tnick = "skauska"
 os.system("clear")
 typing("Придумай офлайн название\n")
-offtitle = input()
+#offtitle = input()
 os.system("clear")
 
 
