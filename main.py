@@ -31,59 +31,61 @@ ver = """
  \___/ \___|_|  |___/_|\___/|_| |_| \___/ (_)  \___/ 
 """
 
-global token, tnick
+global token, tnick, pr, pf
 
 def typing(txt, wait = 0.02):
-  #txt = 'текст который нужен'
-  for i in txt:  # этот цикл будет брать по 1 буковке из тхт
+  #Функция для эффекта печатающегося текста
+  for i in txt:
       time.sleep(wait)
       print(i, end='', flush=True)
 
 with open("config.txt", "r") as file:
+  #Чтение конфига
   token = file.readline()
   token = str(token)
-os.system("cls||clear")
+os.system("cls||clear") #Очищение консоли
 if token == "":
+  #Узнавание токена
   typing("Ты должен ввести свой токен\n")
-  typing("Твой токен только в файле main.py и ты можешь сам посмотреть его код там нету стиллеров и тд\n")
+  typing("Твой токен только в файле main.py и ты можешь сам посмотреть его код там нету стиллеров и тд ведь я закомментировал даже time.sleep\n")
   typing("Если не знаешь как получить свой токен посмотри это видео\n")
   print("https://www.youtube.com/watch?v=uYgkggX_E2g")
   typing("токен должен быть по типу этого - \n Njk4MTM1NzY3NzUwNTQxNDAy.Ycl5sA.kHqhaE9qW9ovTuXvZKZGdLSD0M0\n")
   token = input()
 
   with open("config.txt", "w") as file:
+    #Запись в конфиг
       file.write(token + "\n")
   
-  os.system("cls||clear")
+  os.system("cls||clear") #Очищение консоли
     
-typing("Если тебе надо поменять данные то сделать это ты можешь в config.txt!")
-time.sleep(3)
-os.system("cls||clear")
+typing("[Warning] Если тебе надо поменять данные то сделать это ты можешь в config.txt!")
+time.sleep(3) #Задержка
+os.system("cls||clear") #Очищение консоли
 typing("Каким стримером ты хочешь стать?\n")
 tnick = input()
-os.system("cls||clear")
+os.system("cls||clear") #Очищение консоли
 typing("Придумай офлайн название\n")
 offtitle = input()
-os.system("cls||clear")
+os.system("cls||clear") #Очищение консоли
 
 
 typing(ver, wait = 0.009)
 time.sleep(0.5)
-os.system("cls||clear")
+os.system("cls||clear") #Очищение консоли
   
 @client.event
 async def on_connect():
-  global pr, pf
+  #Функция которая срабатывает при запуске скрипта
   pr = 0
   pf = 0
   while True:
-    #main funcion
-    url = "https://api.twitch.tv/helix/streams?user_login=" + tnick
+    url = "https://api.twitch.tv/helix/streams?user_login=" + tnick #Ссылка апи твича
 
     headers = {
       'Authorization' : 'Bearer vl7w8v42mf0p10dphf7uv0xwsc81tp', 
       'Client-Id' :  'gp762nuuoqcoxypju8c569th9wz7q5'
-    }
+    } #Заголовки для апи твича
 
     req = requests.get(url, headers = headers, timeout = 15)#get request to twitch api
   
@@ -92,17 +94,18 @@ async def on_connect():
     data = str(info.get('data'))
   
 
-    game = data[data.find('game_name')+13 :       data.find('type')-4]
+    game = data[data.find('game_name')+13 :       data.find('type')-4] #Переменая с игрой стримера
 
-    live = data[data.find('type')+8 : data.find('title')-4]
+    live = data[data.find('type')+8 : data.find('title')-4] #Переменная с типом стрима
 
-    viewer_count = str(data[data.find('viewer_count')+15 : data.find("started_at")-3])
+    viewer_count = str(data[data.find('viewer_count')+15 : data.find("started_at")-3]) #Перменная с счетчиком зрителей
 
-    title = data[data.find('title')+9 : data.find("viewer_count")-4]
+    title = data[data.find('title')+9 : data.find("viewer_count")-4] #Название стрима
 
-    debugpr = "name = " + title + "\n" + "Game = "  + game + "\n" + "Viewers = " + viewer_count
+    debugpr = "name = " + title + "\n" + "Game = "  + game + "\n" + "Viewers = " + viewer_count + "\n" + "Streamer name = " + tnick #Вся основная информация о стриме
 
     if live == "live":
+      #Я не вижу смысла объяснять вам все это т.к. вы и так не поймете но это чтобы спамило в консоль данными
       if pr == 0:
         typing(baskets)
         typing("[Info] Online status\n")
@@ -131,7 +134,7 @@ async def on_connect():
       
     
     if live == "live":
-      #live mode
+      #режим стрима
       activity=discord.Streaming(
         platform = "Twitch",
         application_id = 734420240099704833,
@@ -146,12 +149,12 @@ async def on_connect():
       
     
     if live == "":
-      #ofline mode
+      #офлайн режим
       activity=discord.Streaming(
         name = offtitle, 
         url = "https://www.twitch.tv/" + tnick)
 
-    await client.change_presence(activity=activity) 
+    await client.change_presence(activity=activity) #Смена статуса
 
-
+#Запуск стрима
 client.run(token, bot=False)
