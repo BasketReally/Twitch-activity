@@ -60,7 +60,7 @@ typing("Если тебе надо поменять данные то сдела
 time.sleep(3)
 os.system("clear")
 typing("Каким стримером ты хочешь стать?\n")
-tnick = "DarkFox_DF"
+tnick = "esl_csgo"
 os.system("clear")
 typing("Придумай офлайн название\n")
 #offtitle = input()
